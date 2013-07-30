@@ -1,0 +1,8 @@
+name: CobbleConverter
+main: com.trentsterling.cobbleconverter.CobbleConverterPlugin
+authors: [Xryan, Nacho]
+version: 0.0.1
+commands:
+   convert:
+      description: This will convert your cobble into shop tokens
+      usage: /<command> [player]
