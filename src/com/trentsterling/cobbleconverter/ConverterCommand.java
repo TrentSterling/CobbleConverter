@@ -11,20 +11,27 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
 
-public class ConverterCommand implements CommandExecutor {
+public class ConverterCommand implements CommandExecutor
+{
 
-	public ConverterCommand(CobbleConverterPlugin cobbleConverter) {
+	public ConverterCommand(CobbleConverterPlugin cobbleConverter)
+	{
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
+	{
 		// TODO Auto-generated method stub
 
-		if (cmd.getName().equalsIgnoreCase("convert")) {
-			if (!(sender instanceof Player)) {
+		if (cmd.getName().equalsIgnoreCase("convert"))
+		{
+			if (!(sender instanceof Player))
+			{
 				sender.sendMessage("This command can only be run by a player.");
-			} else {
+			}
+			else
+			{
 				Player player = (Player) sender;
 				PlayerInventory inventory = player.getInventory();
 
@@ -33,13 +40,31 @@ public class ConverterCommand implements CommandExecutor {
 
 				int desiredAmount = 1;
 
-				if (args.length > 0) {
-					if (args[0] != null) {
-						if (Integer.parseInt(args[0]) > 0) {
+				if (args.length > 0)
+				{
+					if (args[0] != null)
+					{
+
+						try
+						{
+							Integer.valueOf(args[0]);
+							// return true;
+						}
+						catch (NumberFormatException e)
+						{
+
+							player.sendMessage("You ain't got dat much, bro!");
+
+							return false;
+
+						}
+
+						if (Integer.parseInt(args[0]) > 0)
+						{
 
 							// Must be greater than 0 and must exist
 							desiredAmount = Integer.parseInt(args[0]);
-							//sender.sendMessage("ARG0 = " + args[0]);
+							// sender.sendMessage("ARG0 = " + args[0]);
 						}
 					}
 
@@ -49,13 +74,16 @@ public class ConverterCommand implements CommandExecutor {
 
 				ItemStack itemstack = new ItemStack(Material.COBBLESTONE, 64);
 
-				if (inventory.contains(itemstack, stackCost * desiredAmount)) {
+				if (inventory.contains(itemstack, stackCost * desiredAmount))
+				{
 
-					for (int x = 0; x < stackCost * desiredAmount; x = x + 1) {
+					for (int x = 0; x < stackCost * desiredAmount; x = x + 1)
+					{
 						inventory.removeItem(itemstack);
 					}
 
-					for (int y = 0; y < desiredAmount; y = y + 1) {
+					for (int y = 0; y < desiredAmount; y = y + 1)
+					{
 
 						Material material = Material.BLAZE_POWDER;
 						int ammount = 1;
@@ -79,8 +107,7 @@ public class ConverterCommand implements CommandExecutor {
 				{
 
 					player.sendMessage("You ain't got dat much, bro!");
-					
-					
+
 				}
 
 			}
