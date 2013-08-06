@@ -6,3 +6,6 @@ commands:
    convert:
       description: This will convert your cobble into shop tokens
       usage: /<command> [amount]
+   unconvert:
+      description: This will convert your cobble into shop tokens
+      usage: /<command> [amount]

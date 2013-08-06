@@ -8,6 +8,7 @@ public class CobbleConverterPlugin extends JavaPlugin {
 	public void onEnable() {
 		// TODO Insert logic to be performed when the plugin is enabled
 		getCommand("convert").setExecutor(new ConverterCommand(this));
+		getCommand("unconvert").setExecutor(new UnConvertCommand(this));
 	}
 
 	@Override
